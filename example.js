@@ -1,5 +1,5 @@
 function doIt(param) {
-    param = 2;
+    param = 3;
 }
 
 var test = 1;
