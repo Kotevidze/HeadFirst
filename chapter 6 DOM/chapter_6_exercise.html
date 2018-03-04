@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Exercise</title>
+        <script>
+        function init() {
+            var planet = document.getElementById("greenplanet"); // Получаем элемент по ID, присваиваем его переменной planet
+            console.log(planet.innerHTML); // Выводим на консоль содержимое элемента <p> с ID="greenplanet"
+            planet.innerHTML = "Red Alert: hit by phaser fire!"; // Изменяем содержимое элемента <p> (Свойство innerHTML элемента planet)
+            console.log(planet.innerHTML);
+            planet.setAttribute("class", "redtext");
+        }
+        window.onload = init;
+        </script>
+    </head>
+    <body>
+        <h1>Green Planet</h1>
+        <p id="greenplanet">All is well</p>
+        <h1>Red Planet</h1>
+        <p id="redplanet">Nothing to report</p>
+        <h1>Blue Planet</h1>
+        <p id="blueplanet">All systems A-OK</p>
+        <script>
+        var scoop = document.getElementById("blueplanet");
+        var altText = scoop.getAttribute("alt");
+        if (altText == null) {
+            console.log("Oh, I guess there isn't an alt attribute.");
+        }
+        else {
+            console.log("I can't see the image in the console");
+            console.log(" but I'm told it looks like " + altText);
+        }
+        </script>
+    </body>
+</html>
