@@ -1,6 +1,6 @@
 function doIt(param) {
     param = 3;
-    console.log(param);
+    console.log(param + "Gamarjoba");
 }
 
 var test = 1;
