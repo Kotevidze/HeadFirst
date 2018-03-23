@@ -59,8 +59,16 @@ var model = {
 var controller = {
     guesses: 0, // Количество выстрелов
     processGuess: function(guess) { // Обработка координат выстрела и передача их модели
+        var location = parseGuess(guess);
+        if (location) {
+            this.guesses++;
+            var hit = model.fire(location);
+            if (hit && model.shipsSunk === model.numShips) {
+                view.displayMessage("You sank all my battleships, in " + this.guesses + " guesses");
+            }
+        }
     }
-}
+};
 
 function parseGuess(guess) {
     var alphabet = ["A", "B", "C", "D", "E", "F", "G"];
@@ -84,8 +92,16 @@ function parseGuess(guess) {
     return null;
 }
 
-console.log(parseGuess("A0"));
-console.log(parseGuess("B6"));
-console.log(parseGuess("G3"));
-console.log(parseGuess("H0"));
-console.log(parseGuess("A7"));
+function init() {
+    var fireButton = document.getElementById("fireButton");
+    fireButton.onclick = handleFireButton;
+}
+
+function handleFireButton() {
+    var guessInput = document.getElementById("guessInput") // Получение коорюинат от формы и передача их контрол
+    var guess = guessInput.value;
+    controller.processGuess(guess);
+    guessInput.value = "";
+}
+
+window.onload = init;
