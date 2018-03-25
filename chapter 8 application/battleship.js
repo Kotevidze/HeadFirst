@@ -13,7 +13,7 @@ var view = {
     }
 };
 
-view.displayMessage("Tap tap, is this thing in?");
+view.displayMessage("Гамарджоба! Сыграем в Морской бой?");
 
 var model = {
     boardSize: 7,
@@ -33,16 +33,16 @@ var model = {
             if (index >= 0) {
                 ship.hits[index] = "hit";
                 view.displayHit(guess);
-                view.displayMessage("HIT!");
+                view.displayMessage("Попадание!");
                 if (this.isSunk(ship)) {
-                    view.displayMessage("You sank my battleship!");
+                    view.displayMessage("Вы потопили корабль!");
                     this.shipsSunk++;
                 }
                 return true;
             }
         }
         view.displayMiss(guess);
-        view.displayMessage("You missed.");
+        view.displayMessage("Вы промахнулись.");
         return false;
     },
 
@@ -64,7 +64,7 @@ var controller = {
             this.guesses++;
             var hit = model.fire(location);
             if (hit && model.shipsSunk === model.numShips) {
-                view.displayMessage("You sank all my battleships, in " + this.guesses + " guesses");
+                view.displayMessage("Вы потопили все корабли за " + this.guesses + " попыток!");
             }
         }
     }
@@ -73,17 +73,17 @@ var controller = {
 function parseGuess(guess) {
     var alphabet = ["A", "B", "C", "D", "E", "F", "G"];
     if (guess === null || guess.length !== 2) {
-        alert("Oops, please enter a letter and a number on the board.");
+        alert("Ошибка ввода. Пожалуйста, введите латинскую букву и цифру из представленных на доске.");
     }
     else {
         firstChar = guess.charAt(0);
         var row = alphabet.indexOf(firstChar);
         var column = guess.charAt(1);
         if (isNaN(row) || isNaN(column)) {
-            alert("Oops, that isn't on the board.");
+            alert("Вы пьяны? Пожалуйста, введите латинскую букву и цифру из представленных на доске.");
         }
         else if (row < 0 || row >= model.boardSize || column < 0 || column >= model.boardSize) {
-            alert("Oops, that's off the board!");
+            alert("Ошибка ввода. Пожалуйста, введите латинскую букву и цифру из представленных на доске.");
         }
         else {
             return row + column;
