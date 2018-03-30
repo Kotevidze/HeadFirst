@@ -154,7 +154,7 @@ function handleKeyPress(e) {
 
 function handleFireButton() {
     var guessInput = document.getElementById("guessInput") // Получение коорюинат от формы и передача их контрол
-    var guess = guessInput.value;
+    var guess = guessInput.value.toUpperCase();
     controller.processGuess(guess);
     guessInput.value = "";
 }
