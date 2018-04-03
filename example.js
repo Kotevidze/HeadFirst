@@ -1,27 +1,22 @@
-const smallestDivisor = (num) => {
-  const iter = (acc) => {
-    if (acc > num/2) {
-      return num;
-    }
-    if (num % acc === 0) {
-      return acc;
-    }
-    return iter(acc + 1);
-  };
-  return iter(2);
-};
+var a = 5;
+var b = 3;
 
-console.log(smallestDivisor(7));
+a = b;
+a = 10;
+console.log(a);
 
-var smallestDivisor2 = function(num) {
-  var acc = 2;
-  while (acc < num / 2) {
-    if (num % acc === 0) {
-      return acc;
-    }
-    acc++;
-  } 
-  return num; 
+
+
+
+var objA = {
+  num: 5
+}
+var objB = {
+  num: 3
 }
 
-console.log(smallestDivisor2(15));
+objA = objB;
+objA.num = 10;
+console.log(objA);
+
+ссылкаНаОбъектБ.num
