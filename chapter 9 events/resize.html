@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Не изменяй размер окна браузера</title>
+        <script>
+        function resize() {
+            var element = document.getElementById("display");
+            element.innerHTML = element.innerHTML + " Это щекотно!";
+        }
+        </script>
+    </head>
+    <body>
+        <p id="display">Что бы ты ни делал, не меняй размер окна! Я предупреждаю тебя!</p>
+        <script>
+        window.onresize = resize;
+        </script>
+    </body>
+</html>
