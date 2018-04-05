@@ -15,14 +15,21 @@
                 images[i].onclick = showAnswer;
             }
         }
+
         function showAnswer(eventObj) {
             var image = eventObj.target;
             var name = image.id;
             name = name + ".jpg";
             image.src = name;
+            setTimeout(reblur, 2000, image);
             //var image = document.getElementById("zero");
             //image.src = "zero.jpg";
             //image.setAttribute("src", "zero.jpg")
+        }
+        function reblur(image) {
+            var name = image.id;
+            name = name + "blur.jpg";
+            image.src = name;
         }
         </script>
     </head>
