@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Порядок объявления функций</title>
+    </head>
+    <body>
+        <script>
+        var midi = true;
+        var type = "piano";
+        var midiInterface;
+        function play(sequence) { // Пер. последовательность, ряд
+            console.log("sequence");
+        }
+        var pause = function() {
+            stop();
+        }
+        function stop() {
+            console.log("stop");
+        }
+        function createMidi() {
+            console.log("createMidi");
+        }
+        if (midi) {
+            midiInterface = function(type) {
+                console.log("type");
+            };
+        }
+        </script>
+    </body>
+</html>
