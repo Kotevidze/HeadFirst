@@ -28,7 +28,7 @@ var model = {
     fire: function(guess) {
         for (var i = 0; i < this.numShips; i++) {
             var ship = this.ships[i];
-            // location = ship.location; Временная переменная, используется для промежуточного хранения массива ship.locations/
+            // location = ship.location; Временная переменная, используется для промежуточного хранения массива ship.locations
             var index = ship.location.indexOf(guess); // Метод indexOf ищет в масиве указанное значение и возвращает его индекс (или -1, если значения нет в массиве)
             if (index >= 0) {
                 ship.hits[index] = "hit";
@@ -104,7 +104,10 @@ var model = {
 var controller = {
     guesses: 0, // Количество выстрелов
     processGuess: function(guess) { // Обработка координат выстрела и передача их модели
-        var location = parseGuess(guess);
+        var location = guess;
+        if (isNaN(parseInt(guess))) {
+            location = parseGuess(guess);
+        } 
         if (location) {
             this.guesses++;
             var hit = model.fire(location);
@@ -128,7 +131,7 @@ function parseGuess(guess) {
             alert("Вы пьяны? Пожалуйста, введите латинскую букву и цифру из представленных на доске.");
         }
         else if (row < 0 || row >= model.boardSize || column < 0 || column >= model.boardSize) {
-            alert("Ошибка ввода. Пожалуйста, введите латинскую букву и цифру из представленных на доске.");
+            alert("Ошибка ввода! Пожалуйста, введите латинскую букву и цифру из представленных на доске.");
         }
         else {
             return row + column;
@@ -143,7 +146,17 @@ function init() {
     var guessInput = document.getElementById("guessInput");
     guessInput.onkeypress = handleKeyPress;
     model.generateShipLocations();
+    var table = document.getElementsByTagName("td");
+    for (var i = 0; i < table.length; i++) {
+        table[i].onclick = handleClick;
+    }
 }
+function handleClick(eventObj) {
+    var cell = eventObj.target;
+    var guess = cell.id;
+    controller.processGuess(guess);
+}
+
 function handleKeyPress(e) {
     var fireButton = document.getElementById("fireButton");
     if (e.keyCode === 13) {
