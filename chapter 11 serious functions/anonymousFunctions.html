@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Анонимные функции</title>
+    </head>
+    <body>
+        <script>
+            window.onload = function() {
+                var button = document.getElementById("bake");
+                button.onclick = function() {
+                    console.log("Время выпечки печенья.");
+                    cookies.bake(2500);
+                };
+            };
+            var cookies = {
+                instructions: "Предварительно разогрейте духовку до 350 градусов...",
+                bake: function(time) {
+                    console.log("Выпечка печенья.");
+                    setTimeout(done, time);
+                }
+            }
+            
+
+            function done() {
+                alert("Печенье готово, выньте его для охлаждения.");
+                console.log("Охлаждение печенья.");
+                setTimeout(function() {
+                    alert("Печенье охлаждено, время есть печенье!")
+                }, 1000);
+            }
+        </script>
+        <form>
+            <input type="button" id="bake" value="Выпечь печенье">
+        </form>
+    </body>
+</html>
