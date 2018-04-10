@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Cортировка массивов</title>
+    </head>
+    <body>
+        <script>
+            var numbersArray = [60, 50, 62, 58, 54, 54];
+            console.log(numbersArray);
+            function compareNumbers(num1, num2) {
+                if (num1 > num2) {
+                    return 1;
+                }
+                else if (num1 === num2) {
+                    return 0;
+                }
+                else {
+                    return -1;
+                }
+            }
+            function compareNumbers2(num1, num2) {
+               return num1 - num2;
+           }
+            numbersArray.sort(compareNumbers);
+            console.log(numbersArray);
+        </script>
+    </body>
+</html>
