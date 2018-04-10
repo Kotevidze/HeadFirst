@@ -7,10 +7,10 @@
     <body>
         <script>
             var passengers = [
-                { name: "Jane Doloop", paid: true},
-                { name: "Dr. Evel", paid: true},
-                { name: "Sue Property", paid: false},
-                { name: "John Funcall", paid: true}
+                { name: "Jane Doloop", paid: true, ticket: "coach"},
+                { name: "Dr. Evel", paid: true, ticket: "firstclass"},
+                { name: "Sue Property", paid: false, ticket: "firstclass"},
+                { name: "John Funcall", paid: true, ticket: "premium"}
             ];
             function checkPaid(passengers) {
                 for (var i = 0; i < passengers.length; i++) {
@@ -43,9 +43,72 @@
                 console.log("Самолет не может лететь: не все пассажиры оплатили билет");
             }
             function printPassenger(passenger) {
-                console.log(passenger.name + ", " + passenger.paid);
+                var message = passenger.name;
+                if (passenger.paid === "true") {
+                    message = message + " has paid";
+                }
+                else {
+                    message = message + "has not paid";
+                }
+                console.log(message);
             }
             processPassengers(passengers,printPassenger);
+
+            function serveCustomer(passenger) {// Обслужить клиентов
+                var getDrinkOrderFunction = createDrinkOrder(passenger);
+                var getDinnerOrderFunction = createDinnerOrder(passenger);
+                getDrinkOrderFunction();
+                getDinnerOrderFunction();
+                getDrinkOrderFunction();
+                getDrinkOrderFunction();
+               
+                getDrinkOrderFunction();
+
+            }
+            function createDrinkOrder(passenger) {
+                var orderFunction;
+                if (passenger.ticket === "firstclass") {
+                    orderFunction = function() {
+                        alert("Предложить вам коктейль или вино?");
+                    }
+                }
+                else if (passenger.ticket === "premium") {
+                    orderFunction = function() {
+                        alert("Предложить вам сок, воду или вино?")
+                    }
+                }
+                else {
+                    orderFunction = function() {
+                        alert("Предложить вам сок или воду?");
+                    }
+                }
+                return orderFunction;
+            }
+            function createDinnerOrder(passenger) {
+                var orderFunction;
+                if (passenger.ticket === "firstclass") {
+                    orderFunction = function() {
+                        alert("Предложить вам курицу или пасту?");
+                    }
+                }
+                else if (passenger.ticket === "premium") {
+                    orderFunction = function() {
+                        alert("Предложить вам закуски или сырную тарелку?")
+                    }
+                }
+                else {
+                    orderFunction = function() {
+                        alert("Предложить вам орешки или сухарики?");
+                    }
+                }
+                return orderFunction;
+            }
+            function servePassengers(passengers) {
+                for (var i = 0; i < passengers.length; i++) {
+                    serveCustomer(passengers[i]);
+                }
+            }
+            servePassengers(passengers);
         </script>
     </body>
 </html>

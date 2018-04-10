@@ -1,22 +1,10 @@
-var a = 5;
-var b = 3;
-
-a = b;
-a = 10;
-console.log(a);
-
-
-
-
-var objA = {
-  num: 5
-}
-var objB = {
-  num: 3
+function addN(n) {
+  var adder = function(x) {
+    return n + x;
+  };
+  return adder;
 }
 
-objA = objB;
-objA.num = 10;
-console.log(objA);
-
-ссылкаНаОбъектБ.num
+var add2 = addN(2);
+console.log(add2(10));
+console.log(add2(100));
