@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Лексическая область действия</title>
+    </head>
+    <body>
+        <script>
+            var justAVar = "Глобальная переменная";
+            function whereAreYou() {
+                var justAVar = "Локальная переменная";
+                function inner() {
+                    return justAVar;
+                }
+                return inner;
+            }
+            var innerFunction = whereAreYou();
+            console.log(innerFunction);
+            var result = innerFunction();
+            console.log(result);
+        </script>
+    </body>
+</html>
