@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Замыкания</title>
+    </head>
+    <body>
+        <script>
+            function makeTimer(doneMessage, n) {
+                setTimeout(function() {
+                    alert(doneMessage);
+                }, n);
+            }
+            makeTimer("Печенье готово!", 1000);
+
+            /* function handler() {
+                alert(doneMessage);
+            }
+            function makeTimer(doneMessage, n) {
+                setTimeout(handler, n);
+            }
+            makeTimer("Печенье готово!", 3000);
+        </script>
+    </body>
+</html>
