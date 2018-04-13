@@ -21,8 +21,13 @@
             var name = image.id;
             name = name + ".jpg";
             image.src = name;
-            setTimeout(reblur, 2000, image);
-            //var image = document.getElementById("zero");
+            function reblur() {
+            var name = image.id;
+            name = name + "blur.jpg";
+            image.src = name;
+        }
+        return setTimeout(reblur, 2000)
+            //var image = document.getElementById("zero"); Второй способ изменить свойство элемента
             //image.src = "zero.jpg";
             //image.setAttribute("src", "zero.jpg")
         }
