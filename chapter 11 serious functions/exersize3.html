@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <script>
+            (function(food) {//Если не заключить функциональное выражение в круглые скобки, интерпретатор js 
+                if (food === "cookies") {// будет рассматривать его как объявление функции (без переменной eat),
+                    alert("More please");// а не как функциональное выражение
+                }
+                else if (food === "cake") {
+                    alert("Yum yum");
+                }
+            }) ("cookies");
+            var eat = function(food) {// Выделяем функцию из кода и называем ее eat 
+                if (food === "cookies") {
+                    alert("More please");
+                }
+                else if (food === "cake") {
+                    alert("Yum yum");
+                }
+            };
+            eat ("cookies");// Для вызова eat круглые скобки не нужны, их можно опустить. Это просто пример подставки aet в функциональное выражение
+        </script>
+    </body>
+</html>

@@ -1,25 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Замыкания</title>
+        <title>Замыкания с функциональным выражением в аргументе</title>
     </head>
     <body>
         <script>
             function makeTimer(doneMessage, n) {
                 setTimeout(function() {
                     alert(doneMessage);
-                }, n);
+                }, n)
             }
-            makeTimer("Печенье готово!", 1000);
+             //makeTimer("Печенье готово!", 1000);
 
-            /* function handler() {
-                alert(doneMessage);
+            //function handler() {
+            //    alert("doneMessage");
+            //}
+            //function makeTimer(doneMessage, n) {
+            //    setTimeout(handler, n);
+            //}
+            //makeTimer("Печенье готово!", 1000);
+            
+            function setTimer(doneMessage, n) {
+                setTimeout(function() {
+                    alert(doneMessage);
+                }, n);
+                doneMessage = "Уф!";
             }
-            function makeTimer(doneMessage, n) {
-                setTimeout(handler, n);
-            }
-            makeTimer("Печенье готово!", 3000);
+            setTimer("Печенье готово!", 1000);
         </script>
     </body>
 </html>
