@@ -50,6 +50,9 @@
                 mileage: 12892
             };
             var cadi = new Car (cadiParams);
+            if (cadi instanceof Car) {
+                console.log("Congrats, it's a Car!");
+            }
             var taxiParams = {
                 make: "Webville Motors",
                 model: "Taxi",
