@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Конструктор даты</title>
+    </head>
+    <body>
+        <script>
+            var now = new Date();
+            console.log(now);
+            var dateString = now.toString();
+            console.log(dateString);
+            var theYear = now.getFullYear();
+            console.log(theYear);
+            var theDayOfWeek = now.getDay();
+            console.log(theDayOfWeek);
+            var birthday = new Date("May 1, 1983");
+            console.log(birthday);
+            var birthday = new Date("May 1, 1983 08:03 pm")
+            console.log(birthday);
+        </script>
+    </body>
+</html>
