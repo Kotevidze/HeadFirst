@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Свойство прототипа или объекта</title>
+    </head>
+    <body>
+        <script>
+            function Robot(name, year, owner) {
+                this.name = name;
+                this.year = year;
+                this.owner = owner;
+            }
+            Robot.prototype.maker = "ObjectsRus";
+            Robot.prototype.errorMessage = "All systems go.";
+            Robot.prototype.reportError = function() {// Метод только использует errorMessage, не переопределяет свойство
+                console.log(this.name + " says " + this.errorMessage);
+            };
+            Robot.prototype.spillWater = function() {// Метод присваивает новое значение this.errorMessage, что приводит к переопределению свойства 
+                this.errorMessage = "I appear to have a short circuit!";// в прототипе для любого робота,вызывающего этот метод
+            };
+            var robby = new Robot("Robby", 1956, "Dr. Morbius");
+            var rosie = new Robot("Rosie", 1962, "George Jetson");
+            rosie.reportError();
+            robby.reportError();
+            robby.spillWater();// Объект robby получает собственное свойство errorMessage, которое переопределяет свойство в прототипе
+            rosie.reportError();
+            robby.reportError();
+            console.log(robby.hasOwnProperty("errorMessage"));
+            console.log(rosie.hasOwnProperty("errorMessage"));
+           </script>
+    </body>
+</html>

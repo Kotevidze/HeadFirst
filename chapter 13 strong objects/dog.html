@@ -41,12 +41,35 @@
         spot.bark();
         spot.run();
         spot.wag();
+
         var barnaby = new Dog("Barnaby", "Basset Hound", 55);
         Dog.prototype.sit = function() {
             console.log(this.name + " is now sitting");
         }
         barnaby.sit();
         spot.sit();
+
+        Dog.prototype.sitting = false;
+        Dog.prototype.sit = function() {
+            if (this.sitting) {
+                console.log(this.name + " is already sitting");
+            }
+            else {
+                this.sitting = true;
+                console.log(this.name + " is now sitting");
+            }
+        }
+        barnaby.sit();
+        barnaby.sit();
+        spot.sit();
+        spot.sit();
+        barnaby.sit();
+        spot.sit();
+        barnaby.sit();
+        spot.sit();
+
+        console.log(spot.hasOwnProperty("species"));
+        console.log(spot.hasOwnProperty("bark"));
         </script>
     </body>
 </html>
