@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Проверка конструктора</title>
+    </head>
+    <body>
+        <script>
+            function Dog(name, breed, weight){
+                this.name = name;
+                this.breed = breed;
+                this.weight = weight;
+            }
+            function ShowDog(name, breed, weight, handler) {
+                this.name = name;
+                this.breed = breed;
+                this.weight = weight;
+                this.handler = handler;
+            }
+            ShowDog.prototype = new Dog();
+            ShowDog.prototype.constructor = ShowDog;
+            var fido = new Dog ("Fido", "Mixed", 38);
+            var scotty = new ShowDog("Scotty", "Scottish Terrier", 15, "Cookie");
+            if (fido instanceof Dog) {
+                console.log("Fido is a Dog");
+            }
+            if (fido instanceof ShowDog) {
+                console.log("Fido is a ShowDog");
+            }
+            if (scotty instanceof Dog) {
+                console.log("Scotty is a Dog");
+            }
+            if (scotty instanceof ShowDog) {
+                console.log("Scotty is a ShowDog");
+            }
+            console.log("Fido constructor is " + fido.constructor);
+            console.log("Scotty constructor is " + scotty.constructor);
+        </script>
+    </body>
+</html>

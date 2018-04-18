@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Несколько наследующих прототипов</title>
+    </head>
+    <body>
+        <script>
+            function Robot(name, year, owner) {
+                this.name = name;
+                this.year = year;
+                this.owner = owner;
+            }
+            Robot.prototype.maker = "ObjectsRus";
+            Robot.prototype.speak = function() {
+                console.log("Hello! I am a robot");
+            };
+            Robot.prototype.makeCoffee = function() {
+                console.log("Coffee is ready");
+            };
+            Robot.prototype.blinkLights = function() {// Пер. мигать огнями
+                console.log("I can blink lights")
+            };
+            Robot.prototype.errorMessage = "All systems go.";
+            Robot.prototype.reportError = function() {// Метод только использует errorMessage, не переопределяет свойство
+                console.log(this.name + " says " + this.errorMessage);
+            };
+            Robot.prototype.spillWater = function() {// Метод присваивает новое значение this.errorMessage, что приводит к переопределению свойства 
+                this.errorMessage = "I appear to have a short circuit!";// в прототипе для любого робота,вызывающего этот метод
+            };
+            var robby = new Robot("Robby", 1956, "Dr. Morbius");
+            var rosie = new Robot("Rosie", 1962, "George Jetson");
+            function SpaceRobot(name, year, owner, homePlanet) {
+                this.name = name;
+                this.year = year;
+                this.owner = owner;
+                this.homePlanet = homePlanet;
+            }
+            SpaceRobot.prototype = new Robot;
+            SpaceRobot.prototype.speak = function() {
+                alert(this.name + " says Sir, If I may venture an opinion...");
+            };
+            SpaceRobot.prototype.pilot = function() {
+                alert(this.name + " says Thrusters? Are they important?");
+            };
+            var c3po = new SpaceRobot("C3PO", 1977, "Luke Skywalker", "Tatooine");
+            c3po.speak();
+            c3po.pilot();
+            console.log(c3po.name + " was made by " + c3po.maker);
+            var simon = new SpaceRobot("Simon", 2009, "Carla Diana", "Earth");
+            simon.makeCoffee();
+            simon.blinkLights();
+            simon.speak();
+           </script>
+    </body>
+</html>
