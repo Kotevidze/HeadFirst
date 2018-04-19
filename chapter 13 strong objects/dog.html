@@ -74,12 +74,11 @@
         var aDog = new Dog();
         console.log(aDog);
         function ShowDog(name, breed, weight, handler) {
-            this.name = name;
-            this.breed = breed;
-            this.weight = weight;
+            Dog.call(this, name, breed, weight);
             this.handler = handler;
         }
         ShowDog.prototype = new Dog();
+        ShowDog.prototype.constructor = ShowDog;
         ShowDog.prototype.league = "Webville";
         ShowDog.prototype.stack = function() {
             console.log("Stack");
@@ -94,11 +93,21 @@
             console.log("Groom");
         }
         var scotty = new ShowDog("Scotty", "Scottish Terrier", 15, "Cookie");
+        var beatrice = new ShowDog("Beatrice", "Pomeranian", 5, "Hamilton");
         console.log(scotty);
         scotty.stack();
         scotty.bark();
         console.log(scotty.league);
         console.log(scotty.species);
+        scotty.gait("Walk");
+        beatrice.groom();
+        beatrice.sit();
+        beatrice.sit();
+        console.log(scotty.toString());
+        ShowDog.prototype.toString = function() {
+            return this.name + " is belonging to " + this.handler;
+        }
+        console.log(beatrice.toString());
         </script>
     </body>
 </html>
